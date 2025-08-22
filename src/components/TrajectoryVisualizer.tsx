@@ -2,25 +2,7 @@
 
 // Aira 프로젝트 - 실시간 AI 궤적 시각화 (미니멀 화이트&블랙 디자인)
 
-import { Canvas, useFrame } from '@re      {/* 궤적 연결선 */}
-{
-  points.length > 1 && (
-    <primitive
-      object={
-        new THREE.Line(
-          new THREE.BufferGeometry().setFromPoints(
-            points.map(p => new THREE.Vector3(p.x, p.y, p.z))
-          ),
-          new THREE.LineBasicMaterial({
-            color: '#ffffff',
-            transparent: true,
-            opacity: 0.8
-          })
-        )
-      }
-    />
-  )
-}
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
@@ -69,11 +51,11 @@ function AnimatedTrajectory({ isRunning }: { isRunning: boolean }) {
       const newPoint = generateAITrajectory(time, pointCountRef.current);
       pointCountRef.current = expectedPointCount;
 
-      console.log(`새로운 궤적 점 생성: ${pointCountRef.current}`, newPoint); // 디버깅 로그
+      console.log(`새로운 궤적 점 생성: ${pointCountRef.current}`, newPoint);
 
       setPoints(prev => {
         const newPoints = [...prev, newPoint];
-        console.log(`총 점 개수: ${newPoints.length}`); // 디버깅 로그
+        console.log(`총 점 개수: ${newPoints.length}`);
         return newPoints.slice(-50); // 최대 50개 점 유지
       });
     }
@@ -105,7 +87,7 @@ function AnimatedTrajectory({ isRunning }: { isRunning: boolean }) {
 
   return (
     <group>
-      {/* 궤적 점들 */}
+      {/* 궤적 점들 - 더 크고 밝게 */}
       <group ref={pointsRef}>
         {points.map((point, index) => (
           <mesh key={index} position={[point.x, point.y, point.z]}>
@@ -119,7 +101,7 @@ function AnimatedTrajectory({ isRunning }: { isRunning: boolean }) {
         ))}
       </group>
 
-      {/* 궤적 연결선 */}
+      {/* 궤적 연결선 - 더 밝게 */}
       {points.length > 1 && (
         <primitive
           object={
@@ -128,9 +110,9 @@ function AnimatedTrajectory({ isRunning }: { isRunning: boolean }) {
                 points.map(p => new THREE.Vector3(p.x, p.y, p.z))
               ),
               new THREE.LineBasicMaterial({
-                color: '#333333',
+                color: '#ffffff',
                 transparent: true,
-                opacity: 0.6
+                opacity: 0.8
               })
             )
           }
