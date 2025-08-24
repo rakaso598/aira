@@ -1,7 +1,7 @@
 # AIRA: AI 궤적 시뮬레이션 - ✨[바로가기](https://aira-beta.vercel.app)
 ## 🎬 [Youtube Shorts 시연영상 바로가기](https://youtube.com/shorts/8g7Vpjk7X3E)
 
-![aira-시연](https://github.com/user-attachments/assets/dc68c35c-785b-4cdd-b99c-07b6c758b25e)
+![aira-시연](docs/aira_gif_file.gif)
 
 ### 개요
 
